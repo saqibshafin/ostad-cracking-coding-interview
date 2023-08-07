@@ -21,7 +21,7 @@ int main(){
         cout << i << " ";
     }
     /*
-        In this case, int i:path means that for each element of the vector path, which is of type int, 
+        In this case, "int i: A" means that for each element of the vector A, which is of type int, 
         assign it to the variable i and execute the statement that follows, which is cout << i << " "; 
         This will print each element of the vector separated by a space.
     */    
