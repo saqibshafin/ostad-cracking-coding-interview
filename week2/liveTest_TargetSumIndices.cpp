@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int* targetSum(int* nums, int target);
+int* targetSum(int* nums, int target, int size);
 // vector<int> targetSum(vector<int> nums, int target); 
 /*
     Using std::vector is the recommended approach for returning arrays from functions in 
@@ -22,14 +22,19 @@ int main (){
     for (int i = 0; i < size; i++) {
         cin >> nums[i];
     }
+    // for (int i = 0; i < size; i++) {
+    //     cout << nums[i] << " ";
+    // }
+    // cout << endl;
     
     int target;
     cin >> target;
 
-    int* targetSumItems = targetSum(nums, target);
+    int* targetSumItems = targetSum(nums, target, size);
 
-    int sizeTargetSumArray = sizeof(targetSumItems) / sizeof(targetSumItems[0]);
-    for (int i=0; i<sizeTargetSumArray; i++){
+    // int sizeTargetSumArray = sizeof(targetSumItems) / sizeof(targetSumItems[0]); // error
+    int sizeTargetSumArray = 2;
+    for (int i=0; i<sizeTargetSumArray; i++) {
         cout << targetSumItems[i] << ' ';
     }
     cout << endl;
@@ -37,23 +42,29 @@ int main (){
     return 0;
 }
 
-int* targetSum(int* nums, int target) {
+int* targetSum(int* nums, int target, int size) {
     int* targetSum = new int[2];
-    int x = sizeof(targetSum) / sizeof(targetSum[0]);
-    for (int i=0; i<x; i++){
-        cout << targetSum[i] << ' ';
-    }
-        cout << endl;
+    // int* targetSum[] = {0, 0, 0};
+    // int x = sizeof(targetSum) / sizeof(targetSum[0]); // error
+    // int x = *(&nums + 1) - nums; // error
+    
+    // int x = 3;
+    // for (int i=0; i<x; i++){
+    //     cout << targetSum[i] << ' ';
+    // }
+    // cout << x << endl;
 
     bool done = false;
 
-    int size = sizeof(nums) / sizeof(nums[0]);
+    // int size = sizeof(nums) / sizeof(nums[0]); // error
     
     for (int i=0; i<size; i++){
-        if (nums[i] > target) continue;
+        int numAtI = nums[i];
+        if (numAtI > target) continue;
 
         for (int j=i+1; j<size; j++) {
-            if (nums[j] > target) continue;
+            int numAtJ = nums[j];
+            if (numAtJ > target) continue;
 
             int sum = nums[i] + nums[j];
             if (sum == target) {
