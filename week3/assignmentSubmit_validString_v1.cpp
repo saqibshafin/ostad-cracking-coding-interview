@@ -4,7 +4,10 @@
 // <---------- What exactly is meant by Brackets closed in same order?
 // ---------->
 
-#include <iostream>
+// #include <iostream>
+#include <bits/stdc++.h>
+
+#include <chrono>
 
 using namespace std;
 
@@ -15,6 +18,19 @@ int main() {
   cin >> bracesOnlyString;
 
   int size = bracesOnlyString.length();
+
+  /*
+    https://www.geeksforgeeks.org/measure-execution-time-with-high-precision-in-c-c/
+  */
+
+  // struct timespec start, end;
+
+  // clock_gettime(CLOCK_MONOTONIC, &start);
+
+  auto startt = chrono::high_resolution_clock::now();
+
+  // unsync the I/O of C and C++.
+  ios_base::sync_with_stdio(false);
 
   for (int i = 0; i < size; i++) {
     if (bracesOnlyString[i] == '(') {
@@ -76,6 +92,32 @@ int main() {
   } else {
     cout << "false" << endl;
   }
+
+  // // stop timer.
+  // // clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+  // // clock_gettime(CLOCK_REALTIME, &end);
+  // clock_gettime(CLOCK_MONOTONIC, &end);
+
+  auto endd = chrono::high_resolution_clock::now();
+
+  // // Calculating total time taken by the program.
+  // double time_taken;
+  // time_taken = (end.tv_sec - start.tv_sec) * 1e9;
+  // time_taken = (time_taken + (end.tv_nsec - start.tv_nsec)) * 1e-9;
+
+  // cout << "Time taken by program is : " << fixed << time_taken
+  //      << setprecision(9);
+  // cout << " sec" << endl;
+
+  // Calculating total time taken by the program.
+  double time_takenn =
+      chrono::duration_cast<chrono::nanoseconds>(endd - startt).count();
+
+  time_takenn *= 1e-9;
+
+  cout << "Time taken by program is : " << fixed << time_takenn
+       << setprecision(9);
+  cout << " sec" << endl;
 
   return 0;
 }

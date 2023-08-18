@@ -4,7 +4,8 @@
 // <---------- What exactly is meant by Brackets closed in same order?
 // ---------->
 
-#include <iostream>
+// #include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -17,6 +18,21 @@ int main() {
 
   int size = bracesOnlyString.length();
   // cout << size << endl;
+
+  // /* Time function returns the time since the
+  //       Epoch(jan 1 1970). Returned time is in seconds. */
+  // time_t start, end;
+
+  // /* You can call it like this : start = time(NULL);
+  //   in both the way start contain total time in seconds
+  //   since the Epoch. */
+  // time(&start);
+
+  struct timespec start, end;
+
+  clock_gettime(CLOCK_MONOTONIC, &start);  // unsync the I/O of C and C++.
+
+  ios_base::sync_with_stdio(false);
 
   for (int i = 0; i < size; i++) {
     if (bracesOnlyString[i] == '(') {
@@ -68,6 +84,27 @@ int main() {
     cout << "false" << endl;
   }
 
+  // time(&end);
+
+  // // Calculating total time taken by the program.
+  // double time_taken = double(end - start);
+  // cout << "Time taken by program is : " << fixed << time_taken
+  //      << setprecision(5);
+  // cout << " sec " << endl;
+
+  // stop timer.
+  // clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end);
+  // clock_gettime(CLOCK_REALTIME, &end);
+  clock_gettime(CLOCK_MONOTONIC, &end);
+
+  // Calculating total time taken by the program.
+  double time_taken;
+  time_taken = (end.tv_sec - start.tv_sec) * 1e9;
+  time_taken = (time_taken + (end.tv_nsec - start.tv_nsec)) * 1e-9;
+
+  cout << "Time taken by program is : " << fixed << time_taken
+       << setprecision(9);
+  cout << " sec" << endl;
   return 0;
 }
 
