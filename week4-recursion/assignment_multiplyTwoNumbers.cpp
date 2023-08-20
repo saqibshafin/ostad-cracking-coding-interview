@@ -27,13 +27,11 @@ int recursivelyMultiply(int a, int b, bool aIsLarger) {
 
   // base condition:
   if (a == 1 || b == 1) {
-    int result;
     if (aIsLarger) {
-      result = a;
+      return a;
     } else {
-      result = b;
+      return b;
     }
-    return result;
   }
 
   // recursive case:
