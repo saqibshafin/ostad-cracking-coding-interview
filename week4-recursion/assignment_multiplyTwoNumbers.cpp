@@ -20,12 +20,12 @@ int main() {
 }
 
 int recursivelyMultiply(int a, int b, bool aIsLarger) {
-  // when any of the inputs is 0
+  // when any of the inputs is 0:
   if (a == 0 || b == 0) {
     return 0;
   }
 
-  // base condition
+  // base condition:
   if (a == 1 || b == 1) {
     int result;
     if (aIsLarger) {
@@ -36,6 +36,7 @@ int recursivelyMultiply(int a, int b, bool aIsLarger) {
     return result;
   }
 
+  // recursive case:
   int result;
   if (aIsLarger) {  // the goal is to keep adding the larger number with itself,
                     // as long as the smaller number doesn't become equal to 1.
