@@ -39,14 +39,23 @@ bool isPalindrome(string s, int length, int startIndex) {
   }
 
   // recursive case:
-  bool isAMatch = isPalindrome(s, length, ++startIndex);
+  bool isAMatch = isPalindrome(s, length, startIndex + 1);
 
+  //   if (isAMatch && s[startIndex] == s[length - 1]) {
   if (isAMatch && s[startIndex] == s[length - 1 - startIndex]) {
     return true;
   } else {
     return false;
   }
 }
+
+/*
+    Test cases:
+        defdeff false
+        defdefd false
+        defdfef false
+        defdfed true
+*/
 
 /*
 
