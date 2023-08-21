@@ -38,7 +38,8 @@ int recursivelyMultiply(int a, int b, bool aIsLarger) {
   int result;
   if (aIsLarger) {  // the goal is to keep adding the larger number with itself,
                     // as long as the smaller number doesn't become equal to 1.
-    result = a + recursivelyMultiply(a, --b, aIsLarger);  // "--b" same as (b-1)
+    result = a + recursivelyMultiply(a, --b, aIsLarger);
+    // "--b" same as "(b-1), before being used"
   } else {
     result = b + recursivelyMultiply(--a, b, aIsLarger);
   }
