@@ -21,7 +21,7 @@ int main() {
 }
 
 bool isPalindrome(string s, int length, int startIndex) {
-  if (length % 2 == 0) {  // if length is Even
+  if (length % 2 == 0) { // if length is Even
     // base case 1:
     if (startIndex == length / 2 - 1) {
       // "length/2 - 1", because, we are working with indices.
@@ -31,7 +31,7 @@ bool isPalindrome(string s, int length, int startIndex) {
         return false;
       }
     }
-  } else {  // if length is Odd
+  } else { // if length is Odd
     // base case 2:
     if (startIndex == length / 2) {
       return true;
