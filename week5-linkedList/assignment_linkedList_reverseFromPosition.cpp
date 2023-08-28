@@ -33,32 +33,48 @@ class Solution {
                                   int startPosition, //
                                   int endPosition    //
     ) {
+        if (head == nullptr)
+            return head;
+
         int count = 0;
 
         ListNode *next = nullptr;
         ListNode *current = head;
         ListNode *prev = nullptr;
+        //
+        ListNode *nodeBeforeStartingPosition = nullptr;
+        ListNode *nodeAtStartingPosition = nullptr;
+        ListNode *nodeAfterEndingPosition = nullptr;
 
         while (current != nullptr) {
             // next = current->next;
             // current->next = prev;
             // prev = current;
             // current = next;
+            //
             count++;
             next = current->next;
-            if (count == startPosition - 1) {
-                prev = current;
+            if ((startPosition - 1 == 0) || (count == startPosition - 1)) {
+                nodeBeforeStartingPosition = current;
             }
-            if (count >= startPosition && count <= endPosition) {
+            if (count == startPosition) {
+                prev = current;
+                nodeAtStartingPosition = current;
+            }
+            if (count > startPosition && count <= endPosition) {
                 current->next = prev;
                 prev = current;
                 current = next;
                 continue;
             }
+            if ((count == endPosition + 1) || (endPosition + 1 > count)) {
+                nodeAfterEndingPosition = current;
+            }
             current = next;
         }
 
-        head = prev;
+        nodeBeforeStartingPosition->next = prev;
+        nodeAtStartingPosition->next = nodeAfterEndingPosition;
 
         return head;
     };
@@ -84,13 +100,13 @@ int main() {
     head = node1; // initializing "head" with the address of "node1"
     node1->data = 1, node1->next = node2;
     node2->data = 2, node2->next = node3;
-    node3->data = 3, node3->next = node4;
+    node3->data = 3, node3->next = nullptr;
     node4->data = 4, node4->next = node5;
     node5->data = 5, node5->next = nullptr; // Terminating the Linked list.
 
     Solution solution = Solution();
     solution.display(head);
-    solution.display(solution.reverseFromPosition(head, 2, 4));
+    solution.display(solution.reverseFromPosition(head, 1, 3));
 }
 
 /*
