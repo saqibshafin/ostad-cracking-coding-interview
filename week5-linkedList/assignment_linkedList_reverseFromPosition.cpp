@@ -1,3 +1,5 @@
+// Gets stuck in a infinite loop...
+
 #include <iostream>
 
 using namespace std;
@@ -13,17 +15,17 @@ struct ListNode {
     ListNode(int x, ListNode *next) : data(x), next(next) {}
 };
 
-// Another definition for singly-linked list.
-class Node {
-  public:
-    int data;
-    Node *next;
+// // Another definition for singly-linked list.
+// class Node {
+//   public:
+//     int data;
+//     Node *next;
 
-    Node(int d) { // Default Constructor
-        data = d;
-        next = NULL;
-    }
-};
+//     Node(int d) { // Default Constructor
+//         data = d;
+//         next = NULL;
+//     }
+// };
 
 class Solution {
   public:
@@ -37,23 +39,23 @@ class Solution {
         ListNode *current = head;
         ListNode *prev = nullptr;
 
-        while (current != nullptr && count < 6) {
+        while (current != nullptr) {
             // next = current->next;
             // current->next = prev;
             // prev = current;
             // current = next;
             count++;
+            next = current->next;
             if (count == startPosition - 1) {
                 prev = current;
             }
             if (count >= startPosition && count <= endPosition) {
-                next = current->next;
                 current->next = prev;
                 prev = current;
                 current = next;
                 continue;
             }
-            current = current->next;
+            current = next;
         }
 
         head = prev;
