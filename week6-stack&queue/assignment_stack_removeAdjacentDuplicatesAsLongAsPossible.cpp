@@ -12,7 +12,7 @@ int main() {
 
     stack<char> charStack;
 
-    for (int eChar : str) { // eChar for "elementChar"
+    for (auto eChar : str) { // eChar for "elementChar"
         if (charStack.empty()) {
             charStack.push(eChar);
         } else {
