@@ -1,3 +1,6 @@
+//   You asked to find the minimum number in O(log_n) time, but how? It's not
+// ordered properly! Ordering will take O(n) time...
+
 #include <iostream>
 #include <vector>
 
@@ -15,14 +18,14 @@ int main() {
     // }
 
     int start = 0, end = size - 1; // start and end indices
-    int minNumber = 4;
+    int targetNumber = 4;
     while (start < end) {
         int mid = start + (end - start) / 2;
 
-        if (nums[mid] == minNumber) {
+        if (nums[mid] == targetNumber) {
             std::cout << mid << std::endl;
             return true;
-        } else if (nums[mid] < minNumber) {
+        } else if (nums[mid] < targetNumber) {
             start = mid;
         } else {
             end = mid;
@@ -34,7 +37,8 @@ int main() {
 
 Assignment on Searching
 
-    Write a function that does the following task.
+    Write a function that does the following task:
+
     Suppose an array of length n sorted in ascending order is rotated between 1
 and n times. For example, the array nums = [0,1,2,4,5,6,7] might become:
 
