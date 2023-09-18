@@ -1,4 +1,34 @@
+#include <iostream>
+#include <vector>
 
+int main() {
+    std::vector<int> nums;
+    int size;
+    std::cin >> size;
+    for (int i = 0; i < size; i++) {
+        int x;
+        std::cin >> x;
+        nums.push_back(x);
+    }
+    // for (int i = 0; i < size; i++) {
+    //     std::cout << nums[i];
+    // }
+
+    int start = 0, end = size - 1; // start and end indices
+    int minNumber = 4;
+    while (start < end) {
+        int mid = start + (end - start) / 2;
+
+        if (nums[mid] == minNumber) {
+            std::cout << mid << std::endl;
+            return true;
+        } else if (nums[mid] < minNumber) {
+            start = mid;
+        } else {
+            end = mid;
+        }
+    }
+}
 
 /*
 
