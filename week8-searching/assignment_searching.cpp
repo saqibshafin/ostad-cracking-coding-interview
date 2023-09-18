@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-int findTarget(int targetNumber, std::vector<int>);
+int findMin(int targetNumber, std::vector<int>);
 
 int main() {
     std::vector<int> nums;
@@ -19,13 +19,13 @@ int main() {
     //     std::cout << nums[i];
     // }
 
-    int targetNumIndex = findTarget(targetNumber, nums);
+    int targetNumIndex = findMin(targetNumber, nums);
     std::cout << targetNumIndex << std::endl;
 
     return 0;
 }
 
-int findTarget(int targetNumber, std::vector<int> nums) {
+int findMin(int targetNumber, std::vector<int> nums) {
     int start = 0, end = nums.size() - 1; // start and end indices
 
     while (start <= end) {
