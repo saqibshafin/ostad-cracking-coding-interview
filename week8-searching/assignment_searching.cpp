@@ -4,10 +4,12 @@
 #include <iostream>
 #include <vector>
 
+int findTarget(int targetNumber, std::vector<int>, int);
+
 int main() {
     std::vector<int> nums;
-    int size;
-    std::cin >> size;
+    int size, targetNumber;
+    std::cin >> targetNumber >> size;
     for (int i = 0; i < size; i++) {
         int x;
         std::cin >> x;
@@ -17,20 +19,28 @@ int main() {
     //     std::cout << nums[i];
     // }
 
+    int targetNumIndex = findTarget(targetNumber, nums, size);
+    std::cout << targetNumIndex << std::endl;
+
+    return 0;
+}
+
+int findTarget(int targetNumber, std::vector<int> nums, int size) {
     int start = 0, end = size - 1; // start and end indices
-    int targetNumber = 4;
+
     while (start < end) {
         int mid = start + (end - start) / 2;
 
         if (nums[mid] == targetNumber) {
-            std::cout << mid << std::endl;
-            return true;
+            return mid;
         } else if (nums[mid] < targetNumber) {
-            start = mid;
+            start = mid + 1;
         } else {
-            end = mid;
+            end = mid - 1;
         }
     }
+
+    return -1;
 }
 
 /*
