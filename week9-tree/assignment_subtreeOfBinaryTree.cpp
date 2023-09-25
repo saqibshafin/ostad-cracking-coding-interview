@@ -1,5 +1,5 @@
-// Time complexity:
-// Space complexity:
+// Time complexity: O(n), where, n is each Node in the Binary Search Tree.
+// Space complexity: O(n)
 
 #include <iostream>
 
@@ -19,15 +19,24 @@ class TreeNode {
 
 TreeNode *insert(TreeNode *, int);
 void readBinaryTree(TreeNode *);
-
-void getSubtree(TreeNode *, int);
+void getSubtree(TreeNode *, int, bool *);
 
 int main() {
-    int value = 3, size;
+    int value = 4, size = 5;
     std::cin >> value >> size;
+
+    bool foundSubtree = false;
+    bool *ptrFoundSubtree = &foundSubtree;
 
     TreeNode *root = nullptr; // Initialize an empty tree
 
+    // root = insert(root, 10);
+    // root = insert(root, 11);
+    // root = insert(root, 1);
+    // root = insert(root, 5);
+    // root = insert(root, 3);
+    // root = insert(root, 2);
+    // root = insert(root, 7);
     for (int i = 0; i < size; i++) {
         int x;
         std::cin >> x;
@@ -37,7 +46,10 @@ int main() {
     // readBinaryTree(root);
     // std::cout << std::endl;
 
-    getSubtree(root, value);
+    getSubtree(root, value, ptrFoundSubtree);
+    if (*ptrFoundSubtree == false) {
+        std::cout << "¯\\_(ツ)_/¯"; // Shrug emoji, with '\' Escape character
+    }
     std::cout << std::endl;
 
     return 0;
@@ -72,19 +84,20 @@ void readBinaryTree(TreeNode *root) {
     return;
 }
 
-void getSubtree(TreeNode *root, int value) {
+void getSubtree(TreeNode *root, int value, bool *foundSubtree) {
     if (root == nullptr) {
         return;
     }
 
     if (root->val == value) {
         readBinaryTree(root);
+        *foundSubtree = true;
         return;
     }
 
     // Searching deeper into the tree for a match:
-    getSubtree(root->left, value);
-    getSubtree(root->right, value);
+    getSubtree(root->left, value, foundSubtree);
+    getSubtree(root->right, value, foundSubtree);
 
     return;
 }
