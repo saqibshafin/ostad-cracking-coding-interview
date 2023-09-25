@@ -52,25 +52,14 @@ TreeNode *insert(TreeNode *root, int value) {
 
 // In-order Traversal:
 void readBinaryTree(TreeNode *root) {
-    if (root->left == nullptr && root->right == nullptr) {
-        // return root;
-        std::cout << root->val << std::endl;
+    if (root == nullptr) {
         return;
     }
 
-    if (root->left != nullptr) {
-        // TreeNode *leftNode = readBinaryTree(root->left);
-        // std::cout << "left: " << leftNode->val << std::endl;
-        readBinaryTree(root->left);
-    }
+    readBinaryTree(root->left);
     std::cout << root->val << std::endl;
-    if (root->right != nullptr) {
-        // TreeNode *rightNode = readBinaryTree(root->right);
-        // std::cout << "right: " << rightNode->val << std::endl;
-        readBinaryTree(root->right);
-    }
+    readBinaryTree(root->right);
 
-    // return root;
     return;
 }
 
