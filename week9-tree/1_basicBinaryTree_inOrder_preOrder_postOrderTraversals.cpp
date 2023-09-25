@@ -63,6 +63,9 @@ void readBinaryTree(TreeNode *root) {
     return;
 }
 
+// TODO // Pre-order Traversal:
+// TODO // Post-order Traversal:
+
 /*
 
   https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/

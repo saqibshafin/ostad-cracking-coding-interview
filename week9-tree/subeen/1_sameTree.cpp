@@ -19,17 +19,28 @@ TreeNode *insert(TreeNode *, int);
 void readBinaryTree(TreeNode *);
 
 int main() {
-    TreeNode *root = nullptr; // Initialize an empty tree
+    TreeNode *root1 = nullptr; // Initialize an empty tree
+    TreeNode *root2 = nullptr; // Initialize an empty tree
 
-    root = insert(root, 10);
-    root = insert(root, 11);
-    root = insert(root, 1);
-    root = insert(root, 5);
-    root = insert(root, 3);
-    root = insert(root, 2);
-    root = insert(root, 7);
+    root1 = insert(root1, 10);
+    root1 = insert(root1, 11);
+    root1 = insert(root1, 1);
+    root1 = insert(root1, 5);
+    root1 = insert(root1, 3);
+    root1 = insert(root1, 2);
+    root1 = insert(root1, 7);
+    //
+    root2 = insert(root2, 10);
+    root2 = insert(root2, 11);
+    root2 = insert(root2, 1);
+    root2 = insert(root2, 5);
+    root2 = insert(root2, 3);
+    root2 = insert(root2, 2);
+    root2 = insert(root2, 7);
 
-    readBinaryTree(root);
+    readBinaryTree(root1);
+    std::cout << std::endl;
+    readBinaryTree(root2);
 
     return 0;
 }
