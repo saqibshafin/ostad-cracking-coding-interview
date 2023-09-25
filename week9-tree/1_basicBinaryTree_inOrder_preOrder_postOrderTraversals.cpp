@@ -30,6 +30,7 @@ int main() {
     root = insert(root, 7);
 
     readBinaryTree(root);
+    std::cout << std::endl;
 
     return 0;
 }
@@ -57,7 +58,7 @@ void readBinaryTree(TreeNode *root) {
     }
 
     readBinaryTree(root->left);
-    std::cout << root->val << std::endl;
+    std::cout << root->val << ' ';
     readBinaryTree(root->right);
 
     return;

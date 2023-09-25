@@ -18,6 +18,8 @@ TreeNode *insert(TreeNode *, int);
 // TreeNode *readBinaryTree(TreeNode *);
 void readBinaryTree(TreeNode *);
 
+bool isSameTree(TreeNode *, TreeNode *);
+
 int main() {
     TreeNode *root1 = nullptr; // Initialize an empty tree
     TreeNode *root2 = nullptr; // Initialize an empty tree
@@ -41,6 +43,7 @@ int main() {
     readBinaryTree(root1);
     std::cout << std::endl;
     readBinaryTree(root2);
+    std::cout << std::endl;
 
     return 0;
 }
@@ -68,10 +71,15 @@ void readBinaryTree(TreeNode *root) {
     }
 
     readBinaryTree(root->left);
-    std::cout << root->val << std::endl;
+    std::cout << root->val << ' ';
     readBinaryTree(root->right);
 
     return;
+}
+
+bool isSameTree(TreeNode *root1, TreeNode *root2) {
+    return true;
+    return true;
 }
 
 /*
