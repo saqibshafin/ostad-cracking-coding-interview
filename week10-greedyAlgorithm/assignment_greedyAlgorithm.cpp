@@ -1,16 +1,21 @@
 // Time complexity:
 // Space complexity:
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
+
+bool sortCol(const std::vector<int> &v1, const std::vector<int> &v2) {
+    return v1[1] < v2[1]; // sorting based on the 2nd column (index=1)
+}
 
 int main() {
     int row = 4, col = 2;
     std::vector<std::vector<int>> twoDVect = {
         {1, 4},
-        {2, 3},
-        {4, 6},
         {8, 9},
+        {4, 6},
+        {2, 3},
     };
     // int row = 3, col = 2;
     // std::vector<std::vector<int>> twoDVect = {
@@ -21,6 +26,30 @@ int main() {
 
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col; j++) {
+            std::cout << twoDVect[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+
+    // calculating difference between each interval:
+    for (int i = 0; i < row; i++) {
+        twoDVect[i].push_back(twoDVect[i][1] - twoDVect[i][0]);
+    }
+
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col + 1; j++) {
+            std::cout << twoDVect[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+
+    // sorting based on the 2nd column:
+    std::sort(twoDVect.begin(), twoDVect.end(), sortCol);
+
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col + 1; j++) {
             std::cout << twoDVect[i][j] << " ";
         }
         std::cout << std::endl;
