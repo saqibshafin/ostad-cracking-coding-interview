@@ -10,12 +10,9 @@ bool sortCol(const std::vector<int> &v1, const std::vector<int> &v2) {
 }
 
 int main() {
-    int row = 4, col = 2;
+    int row = 5, col = 2;
     std::vector<std::vector<int>> twoDVect = {
-        {1, 4},
-        {8, 9},
-        {4, 6},
-        {2, 3},
+        {1, 4}, {8, 9}, {4, 6}, {2, 3}, {2, 4},
     };
     // int row = 3, col = 2;
     // std::vector<std::vector<int>> twoDVect = {
