@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+void navigateMaze(std::vector<std::vector<int>>, bool *);
+
 int main() {
     std::vector<std::vector<int>> maze = {
         {1, 0, 0, 0},
@@ -11,6 +13,15 @@ int main() {
         {1, 1, 0, 0},
         {0, 1, 1, 1},
     };
+
+    bool pathFound = false;
+    bool *ptrPathFound = &pathFound;
+
+    navigateMaze(maze, ptrPathFound);
+}
+
+void navigateMaze(std::vector<std::vector<int>> theMaze, bool *pathFound) {
+    // if 3,3 reached then return
 }
 
 /*
