@@ -1,6 +1,8 @@
 // Time complexity: O(N!)
 // Space complexity: O(N)
 
+// ---------------------DOESN'T WORK, NONE OF THEM.---------------------
+
 #include <iostream>
 #include <string>
 #include <unordered_map>
