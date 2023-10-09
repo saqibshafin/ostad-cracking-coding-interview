@@ -1,6 +1,8 @@
 // Time complexity:
 // Space complexity:
 
+// --------------------UNFINISHED, SORRY FOR THAT--------------------
+
 #include <iostream>
 #include <vector>
 
@@ -23,17 +25,28 @@ int main() {
 void navigateMaze(std::vector<std::vector<int>> theMaze, int indexH, int indexV,
                   bool *pathFound) {
     // base case:
-    // if 3,3 reached then return
-    if (indexH == theMaze[0].size()) {
+    if (indexH == theMaze[0].size() - 1) {
         return;
     }
 
     if (indexV <= theMaze[indexH].size() - 1) {
+        // traversing horizontally, to the right:
         if (theMaze[indexH][indexV] == theMaze[indexH][indexV + 1]) {
             *pathFound = true;
             navigateMaze(theMaze, indexH, indexV + 1, pathFound);
         }
+        // traversing vertically, upwards:
+        if (theMaze[indexH][indexV] == theMaze[indexH][indexV + 1]) {
+            *pathFound = true;
+            navigateMaze(theMaze, indexH, indexV + 1, pathFound);
+        }
+        // traversing vertically, downwards:
+        if (theMaze[indexH][indexV] == theMaze[indexH + 1][0]) {
+            *pathFound = true;
+            navigateMaze(theMaze, indexH + 1, 0, pathFound);
+        }
     } else {
+        // traversing vertically, downwards:
         if (theMaze[indexH][indexV] == theMaze[indexH + 1][0]) {
             *pathFound = true;
             navigateMaze(theMaze, indexH + 1, 0, pathFound);
