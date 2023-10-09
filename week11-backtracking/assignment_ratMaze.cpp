@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-void navigateMaze(std::vector<std::vector<int>>, bool *);
+void navigateMaze(std::vector<std::vector<int>>, int, int, bool *);
 
 int main() {
     std::vector<std::vector<int>> maze = {
@@ -17,11 +17,28 @@ int main() {
     bool pathFound = false;
     bool *ptrPathFound = &pathFound;
 
-    navigateMaze(maze, ptrPathFound);
+    navigateMaze(maze, 0, 0, ptrPathFound);
 }
 
-void navigateMaze(std::vector<std::vector<int>> theMaze, bool *pathFound) {
+void navigateMaze(std::vector<std::vector<int>> theMaze, int indexH, int indexV,
+                  bool *pathFound) {
+    // base case:
     // if 3,3 reached then return
+    if (indexH == theMaze[0].size()) {
+        return;
+    }
+
+    if (indexV <= theMaze[indexH].size() - 1) {
+        if (theMaze[indexH][indexV] == theMaze[indexH][indexV + 1]) {
+            *pathFound = true;
+            navigateMaze(theMaze, indexH, indexV + 1, pathFound);
+        }
+    } else {
+        if (theMaze[indexH][indexV] == theMaze[indexH + 1][0]) {
+            *pathFound = true;
+            navigateMaze(theMaze, indexH + 1, 0, pathFound);
+        }
+    }
 }
 
 /*
