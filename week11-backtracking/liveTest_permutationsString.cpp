@@ -6,11 +6,16 @@
 #include <unordered_map>
 #include <vector>
 
-void generatePermutations(int, std::vector<char>, std::vector<int>,
-                          std::vector<char>);
+void generatePermutations(int, std::vector<char>, //
+                          std::vector<int>,       //
+                          std::vector<char>       //
+);
 
-void genPerm(std::vector<char> &, std::unordered_map<int, bool>,
-             std::vector<char> &, std::vector<std::vector<char>> &);
+void genPerm(std::vector<char> &,             //
+             std::unordered_map<int, bool>,   //
+             std::vector<char> &,             //
+             std::vector<std::vector<char>> & //
+);
 
 int main() {
     std::string input = "abc";
@@ -71,6 +76,7 @@ void genPerm(std::vector<char> &A,                  //
              std::vector<char> &B,                  //
              std::vector<std::vector<char>> &result //
 ) {
+    // base case
     if (B.size() == A.size()) {
         result.push_back(B);
         return;
