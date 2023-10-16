@@ -6,20 +6,20 @@
 #include <vector>
 
 int main() {
-    int nodes = 3;
-    int source = 0;
-    int destination = 2;
-    std::vector<std::vector<int>> edges = {
-        {0, 1},
-        {1, 2},
-        {2, 0},
-    };
-    // int nodes = 6;
+    // int nodes = 3;
     // int source = 0;
-    // int destination = 5;
+    // int destination = 2;
     // std::vector<std::vector<int>> edges = {
-    //     {0, 1}, {0, 2}, {3, 5}, {5, 4}, {4, 3},
+    //     {0, 1},
+    //     {1, 2},
+    //     {2, 0},
     // };
+    int nodes = 6;
+    int source = 0;
+    int destination = 5;
+    std::vector<std::vector<int>> edges = {
+        {0, 1}, {0, 2}, {3, 5}, {5, 4}, {4, 3},
+    };
 
     std::vector<int> sourceCycle;
     std::vector<int> destinationCycle;
@@ -44,24 +44,22 @@ int main() {
                 destinationCycle.push_back(edges[i][1]);
             }
 
-            //
+            // Searching if sourceCycle has edges[i][j]:
             auto itSourceCycle =
                 std::find(sourceCycle.begin(), sourceCycle.end(), edges[i][j]);
 
-            // If element was found:
+            // If element was found, add to sourceCycle`:
             if (itSourceCycle != sourceCycle.end()) {
                 sourceCycle.push_back(edges[i][j]);
-            } else {
             }
 
-            //
+            // Searching if destinationCycle has edges[i][j]:
             auto itDestinationCycle = std::find(
                 destinationCycle.begin(), destinationCycle.end(), edges[i][j]);
 
-            // If element was found:
+            // If element was found, add to destinationCycle:
             if (itDestinationCycle != destinationCycle.end()) {
                 destinationCycle.push_back(edges[i][j]);
-            } else {
             }
         }
     }
@@ -87,7 +85,8 @@ int main() {
     //
     auto it = std::find(sourceCycle.begin(), sourceCycle.end(), destination);
 
-    // If element was found:
+    // If element was found within sourceCycle (or destinationCycle, if we
+    // wish):
     if (it != sourceCycle.end()) {
         validPathExists = "true";
     } else {
