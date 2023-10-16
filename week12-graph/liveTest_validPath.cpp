@@ -1,5 +1,5 @@
-// Time complexity: O(n^2), because of the find(operation within "i" for-loop)
-// Space complexity: O(n)
+// Time complexity: O(n^2), because of the find(operation within "i" for-loop, &
+// "j" is always constant) Space complexity: O(n)
 
 #include <algorithm>
 #include <iostream>
