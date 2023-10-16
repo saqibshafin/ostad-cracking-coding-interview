@@ -4,7 +4,21 @@
 #include <iostream>
 #include <vector>
 
-int main() {}
+int main() {
+    int nodes = 4;
+    std::vector<std::vector<int>> edges = {
+        {1, 2},
+        {2, 3},
+    };
+    // std::vector<int> x = {7};
+    // edges.push_back({x});
+    edges.push_back({4});
+    edges.push_back({5});
+
+    for (auto edge : edges) {
+        std::cout << edge[0] << ' ' << edge[1] << std::endl;
+    }
+}
 
 /*
 
