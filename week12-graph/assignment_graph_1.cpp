@@ -1,40 +1,43 @@
-// Time complexity:
-// Space complexity:
+// Time complexity: O(n^2)
+// Space complexity: O(n)
 
+#include <algorithm>
 #include <iostream>
 #include <queue>
 #include <vector>
 
 int main() {
-    int nodes = 4;
+    // int nodes = 4;
+    int nodes = 3;
     std::vector<std::vector<int>> edges = {
         {1, 2},
-        {2, 3},
+        // {2, 3},
+        {2, 1},
     };
     // std::vector<int> x = {7};
     // edges.push_back({x});
     // edges.push_back({4, 6});
     // edges.push_back({5});
 
-    for (auto edge : edges) {
-        std::cout << edge[0] << ' ' << edge[1] << std::endl;
-    }
+    // for (auto edge : edges) {
+    //     std::cout << edge[0] << ' ' << edge[1] << std::endl;
+    // }
 
     std::vector<int> allNodes;
 
     for (int i = 1; i <= nodes; i++) {
         allNodes.push_back(i);
     }
-    for (int i = 1; i <= nodes; i++) {
-        std::cout << allNodes[i - 1];
-    }
-    std::cout << std::endl;
+    // for (int i = 1; i <= nodes; i++) {
+    //     std::cout << allNodes[i - 1];
+    // }
+    // std::cout << std::endl;
 
     std::vector<int> visited(allNodes.size(), 0);
-    for (int i = 0; i < nodes; i++) {
-        std::cout << visited[i];
-    }
-    std::cout << std::endl;
+    // for (int i = 0; i < nodes; i++) {
+    //     std::cout << visited[i];
+    // }
+    // std::cout << std::endl;
 
     std::queue<int> qNodes;
     // for (int i = 1; i <= nodes; i++) {
@@ -62,23 +65,41 @@ int main() {
     // }
 
     for (int i = 0; i < edges.size(); i++) {
-        int node = qNodes.front();
-        qNodes.pop();
 
-        for (int j = 0; j < edges[node].size(); j++) {
-            int newNode = edges[node][j];
+        for (int j = 0; j < edges[i].size(); j++) {
+            int k = edges[i][j];
+            auto it = std::find(allNodes.begin(), allNodes.end(), k);
+            int index;
 
-            if (!visited[newNode]) {
-                visited[newNode] = 1;
-                qNodes.push(newNode);
+            // If element was found
+            if (it != allNodes.end()) {
+
+                // calculating the index
+                // of K
+                index = it - allNodes.begin();
+                // std::cout << index << std::endl;
+            } else {
+                // If the element is not
+                // present in the vector
+                // std::cout << "-1" << std::endl;
+            }
+
+            if (!visited[index]) {
+                visited[index] = 1;
             }
         }
     }
 
+    int connectedComponents = 0;
     for (int i = 0; i < nodes; i++) {
-        std::cout << visited[i];
+        if (visited[i] == 0) {
+            connectedComponents++;
+        }
+        // std::cout << visited[i];
     }
-    std::cout << std::endl;
+    // std::cout << std::endl;
+
+    std::cout << (connectedComponents + 1) << std::endl;
 }
 
 /*
