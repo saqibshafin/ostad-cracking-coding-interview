@@ -2,6 +2,7 @@
 // Space complexity:
 
 #include <iostream>
+#include <queue>
 #include <vector>
 
 int main() {
@@ -12,12 +13,72 @@ int main() {
     };
     // std::vector<int> x = {7};
     // edges.push_back({x});
-    edges.push_back({4});
-    edges.push_back({5});
+    // edges.push_back({4, 6});
+    // edges.push_back({5});
 
     for (auto edge : edges) {
         std::cout << edge[0] << ' ' << edge[1] << std::endl;
     }
+
+    std::vector<int> allNodes;
+
+    for (int i = 1; i <= nodes; i++) {
+        allNodes.push_back(i);
+    }
+    for (int i = 1; i <= nodes; i++) {
+        std::cout << allNodes[i - 1];
+    }
+    std::cout << std::endl;
+
+    std::vector<int> visited(allNodes.size(), 0);
+    for (int i = 0; i < nodes; i++) {
+        std::cout << visited[i];
+    }
+    std::cout << std::endl;
+
+    std::queue<int> qNodes;
+    // for (int i = 1; i <= nodes; i++) {
+    //     qNodes.push(i);
+    // }
+    // for (int i = 1; i <= nodes; i++) {
+    //     std::cout << qNodes.front();
+    //     qNodes.pop();
+    // }
+    // std::cout << std::endl;
+    qNodes.push(edges[0][0]);
+
+    // while (!qNodes.empty()) {
+    //     int node = qNodes.front();
+    //     qNodes.pop();
+
+    //     for (int i = 0; i < edges[node].size(); i++) {
+    //         int newNode = edges[node][i];
+
+    //         if (!visited[newNode]) {
+    //             visited[newNode] = 1;
+    //             qNodes.push(newNode);
+    //         }
+    //     }
+    // }
+
+    for (int i = 0; i < edges.size(); i++) {
+        int node = qNodes.front();
+        qNodes.pop();
+
+        for (int j = 0; j < edges[node].size(); j++) {
+            int newNode = edges[node][j];
+
+            if (!visited[newNode]) {
+                visited[newNode] = 1;
+                qNodes.push(newNode);
+            }
+        }
+    }
+
+    for (int i = 0; i < nodes; i++) {
+        std::cout << visited[i];
+    }
+    std::cout << std::endl;
 }
 
 /*
