@@ -49,7 +49,7 @@ int main() {
             auto itSourceCycle =
                 std::find(sourceCycle.begin(), sourceCycle.end(), edges[i][j]);
 
-            // If element was found, add to sourceCycle`:
+            // If element was found, add to sourceCycle:
             if (itSourceCycle != sourceCycle.end()) {
                 sourceCycle.push_back(edges[i][j]);
             }
@@ -83,7 +83,8 @@ int main() {
 
     std::string validPathExists = "false";
 
-    //
+    // Searching for "destination" within sourceCycle (or "source" within
+    // destinationCycle, if we wish):
     auto it = std::find(sourceCycle.begin(), sourceCycle.end(), destination);
 
     // If element was found within sourceCycle (or destinationCycle, if we
