@@ -17,6 +17,10 @@ int main() {
 
     for (auto edge : edges) {
         adjacencyList[edge[0]].push_back(edge[1]);
+        /*
+            1 -> 2,5,6
+            2 -> 3,4
+        */
     }
 
     q.push(1);
@@ -26,11 +30,20 @@ int main() {
     int branchCount = 0;
 
     while (!q.empty()) {
+
         int u = q.front();
         q.pop();
 
-        for (auto v : adjacencyList[u]) {
+        if (adjacencyList[u].size() == 0) {
+            cout << u << endl;
+            continue;
+        }
 
+        for (auto v : adjacencyList[u]) {
+            if (goodBadList[v] == 1) {
+
+                branchCount++;
+            }
             if (visited[v] == 0) {
                 visited[v] = 1;
                 q.push(v);
@@ -41,7 +54,7 @@ int main() {
     for (auto element : visited) {
         cout << element << " ";
     }
-    cout << endl;
+    cout << branchCount << " " << count << endl;
 }
 
 /*
