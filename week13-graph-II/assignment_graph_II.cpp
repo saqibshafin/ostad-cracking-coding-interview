@@ -1,3 +1,6 @@
+// -----------------Don't check this version, see the Commit before
+// 11:59PM-----------------
+
 #include <iostream>
 #include <list>
 #include <queue>
@@ -5,34 +8,57 @@
 
 using namespace std;
 
-int dfs(int A,                            //
-        vector<int> &visited,             //
-        vector<list<int>> &adjacencyList, //
-        int branchCount,                  //
-        int count,                        //
-        vector<int> &goodBadList) {
-    // if (visited[A] == 1) {
-    //     return;
-    // }
+void dfs(int A,                            //
+         vector<int> &visited,             //
+         vector<list<int>> &adjacencyList, //
+         int *branchCount,                 //
+         int *count,                       //
+         int C,                            //
+         vector<int> &goodBadList) {
     if (adjacencyList[A].size() == 0) {
-        return count;
+        int x = 0;
+
+        if (goodBadList[A] == 1) {
+            (*branchCount)++;
+            /*
+            Note that the parentheses are necessary to ensure that the
+            dereference operator is applied before the increment operator.
+            Otherwise, you would be incrementing the pointer itself, not the
+            value it points to.
+            */
+            // *branchCount = *branchCount + 1;
+            cout << *branchCount << endl;
+
+            x = *branchCount;
+            (*branchCount)--;
+        }
+
+        if (x <= C) {
+            (*count)++;
+        }
+
+        return;
     }
 
     visited[A] = 1;
     if (goodBadList[A] == 1) {
-
-        branchCount++;
-        cout << endl << branchCount << endl;
+        (*branchCount)++;
+        // *branchCount = *branchCount + 1;
+        cout << *branchCount << endl;
     }
 
     for (auto v : adjacencyList[A]) {
         if (visited[v] == 0) {
             visited[v] = 1;
-            dfs(v, visited, adjacencyList, branchCount, count, goodBadList);
+            dfs(v, visited, adjacencyList, branchCount, count, C, goodBadList);
         }
     }
 
-    return count;
+    if (goodBadList[A] == 1) {
+        (*branchCount)--;
+    }
+
+    return;
 }
 
 int main() {
@@ -52,43 +78,17 @@ int main() {
         */
     }
 
-    // q.push(1);
-    // visited[1] = 1;
+    int x = 0;
+    int *count = &x;
+    int y = 0;
+    int *branchCount = &y;
 
-    int count = 0;
-    int branchCount = 0;
-
-    dfs(1, visited, adjacencyList, branchCount, count, goodBadList);
-
-    // while (!q.empty()) {
-    //         int u = q.front();
-    //         q.pop();
-
-    //     if (adjacencyList[u].size() == 0) {
-    //         q.pop();
-
-    //         if (branchCount < C) {
-    //             count++;
-    //             cout << u << endl;
-    //         }
-    //     }
-
-    //     for (auto v : adjacencyList[u]) {
-    //         if (goodBadList[v] == 1) {
-
-    //             branchCount++;
-    //         }
-    //         if (visited[v] == 0) {
-    //             visited[v] = 1;
-    //             q.push(v);
-    //         }
-    //     }
-    // }
+    dfs(1, visited, adjacencyList, branchCount, count, C, goodBadList);
 
     for (auto element : visited) {
         cout << element << " ";
     }
-    cout << endl << branchCount << " " << count << endl;
+    cout << endl << *branchCount << " " << *count << endl;
 }
 
 /*
