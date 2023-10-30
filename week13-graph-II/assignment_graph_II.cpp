@@ -5,11 +5,40 @@
 
 using namespace std;
 
-// void dfs()
+int dfs(int A,                            //
+        vector<int> &visited,             //
+        vector<list<int>> &adjacencyList, //
+        int branchCount,                  //
+        int count,                        //
+        vector<int> &goodBadList) {
+    // if (visited[A] == 1) {
+    //     return;
+    // }
+    if (adjacencyList[A].size() == 0) {
+        return count;
+    }
+
+    visited[A] = 1;
+    if (goodBadList[A] == 1) {
+
+        branchCount++;
+        cout << endl << branchCount << endl;
+    }
+
+    for (auto v : adjacencyList[A]) {
+        if (visited[v] == 0) {
+            visited[v] = 1;
+            dfs(v, visited, adjacencyList, branchCount, count, goodBadList);
+        }
+    }
+
+    return count;
+}
 
 int main() {
-    vector<vector<int>> edges = {{1, 2}, {1, 5}, {1, 6}, {2, 3}, {2, 4}};
-    vector<int> goodBadList = {0, 0, 1, 0, 1, 1, 1};
+    vector<int> goodBadList = {0, 0, 1, 0, 1, 1, 1};                      // A
+    vector<vector<int>> edges = {{1, 2}, {1, 5}, {1, 6}, {2, 3}, {2, 4}}; // B
+    int C = 1;                                                            // C
 
     vector<list<int>> adjacencyList(6 + 1);
     vector<int> visited(6 + 1, 0);
@@ -23,38 +52,43 @@ int main() {
         */
     }
 
-    q.push(1);
-    visited[1] = 1;
+    // q.push(1);
+    // visited[1] = 1;
 
     int count = 0;
     int branchCount = 0;
 
-    while (!q.empty()) {
+    dfs(1, visited, adjacencyList, branchCount, count, goodBadList);
 
-        int u = q.front();
-        q.pop();
+    // while (!q.empty()) {
+    //         int u = q.front();
+    //         q.pop();
 
-        if (adjacencyList[u].size() == 0) {
-            cout << u << endl;
-            continue;
-        }
+    //     if (adjacencyList[u].size() == 0) {
+    //         q.pop();
 
-        for (auto v : adjacencyList[u]) {
-            if (goodBadList[v] == 1) {
+    //         if (branchCount < C) {
+    //             count++;
+    //             cout << u << endl;
+    //         }
+    //     }
 
-                branchCount++;
-            }
-            if (visited[v] == 0) {
-                visited[v] = 1;
-                q.push(v);
-            }
-        }
-    }
+    //     for (auto v : adjacencyList[u]) {
+    //         if (goodBadList[v] == 1) {
+
+    //             branchCount++;
+    //         }
+    //         if (visited[v] == 0) {
+    //             visited[v] = 1;
+    //             q.push(v);
+    //         }
+    //     }
+    // }
 
     for (auto element : visited) {
         cout << element << " ";
     }
-    cout << branchCount << " " << count << endl;
+    cout << endl << branchCount << " " << count << endl;
 }
 
 /*
