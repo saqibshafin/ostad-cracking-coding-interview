@@ -1,5 +1,5 @@
-// -----------------Don't check this version, see the Commit before
-// 11:59PM-----------------
+// -----------------To OSTAD instructor: Don't check this version, see the
+// Commit before 11:59PM.-----------------
 
 #include <iostream>
 #include <list>
