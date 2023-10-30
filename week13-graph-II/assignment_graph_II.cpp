@@ -9,6 +9,7 @@ using namespace std;
 
 int main() {
     vector<vector<int>> edges = {{1, 2}, {1, 5}, {1, 6}, {2, 3}, {2, 4}};
+    vector<int> goodBadList = {0, 0, 1, 0, 1, 1, 1};
 
     vector<list<int>> adjacencyList(6 + 1);
     vector<int> visited(6 + 1, 0);
@@ -20,6 +21,9 @@ int main() {
 
     q.push(1);
     visited[1] = 1;
+
+    int count = 0;
+    int branchCount = 0;
 
     while (!q.empty()) {
         int u = q.front();
