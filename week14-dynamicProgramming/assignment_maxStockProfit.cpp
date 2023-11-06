@@ -51,7 +51,9 @@ int maxProfit(int price[], int start, int end) {
 
 // Driver code
 int main() {
-    int price[] = {100, 180, 260, 310, 40, 535, 695};
+    // int price[] = {100, 180, 260, 310, 40, 535, 695};
+    // int price[] = {7, 1, 5, 3, 6, 4};
+    int price[] = {1, 2, 3, 4, 5};
     int n = sizeof(price) / sizeof(price[0]);
 
     cout << maxProfit(price, 0, n - 1);
