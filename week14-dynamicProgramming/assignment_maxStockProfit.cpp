@@ -1,5 +1,15 @@
-// C++ implementation of the approach
+/*
+Sorry, I am sick, and this program doesnt work as expected. Couldn't think
+straight. Sorry.
+*/
+
+/* https://www.geeksforgeeks.org/stock-buy-sell/ */
+
+// Time complexity:
+// Space complexity:
+
 #include <bits/stdc++.h>
+
 using namespace std;
 
 // Function to return the maximum profit
