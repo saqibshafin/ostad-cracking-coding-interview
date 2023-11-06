@@ -1,5 +1,5 @@
 /*
-Sorry, I am sick, and this program doesnt work as expected. Couldn't think
+Sorry, I am sick, and this program isn't mine. Couldn't think
 straight. Sorry.
 */
 
