@@ -1,5 +1,5 @@
-// Time complexity:
-// Space complexity:
+// Time complexity: O(n^2)
+// Space complexity: O(n^2)
 
 #include <iostream>
 
