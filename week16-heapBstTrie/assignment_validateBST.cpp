@@ -69,8 +69,8 @@ class Solution {
             // comparing max_val with the root_val:
             int max_value = find_max(root->left);
             if (max_value >= root->val) {
-                // if max_val is larger than root_val (of a left node) , it
-                // means, it's not a valid BST:
+                // if max_val is larger than or equal to the root_val (of a left
+                // node) , it means, it's not a valid BST:
                 return false;
             }
         }
@@ -79,8 +79,8 @@ class Solution {
             // comparing min_val with the root_val:
             int min_value = find_min(root->right);
             if (min_value <= root->val) {
-                // if min_val is smaller than root_val (of a right node) , it
-                // means, it's not a valid BST:
+                // if min_val is smaller than or equal to root_val (of a right
+                // node) , it means, it's not a valid BST:
                 return false;
             }
         }
